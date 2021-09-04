@@ -9,11 +9,18 @@ namespace HnidetsOleksandr.RobotChallenge
 {
     public class HnidetsOleksandr : IRobotAlgorithm
     {
-        string IRobotAlgorithm.Author => throw new NotImplementedException();
-
-        RobotCommand IRobotAlgorithm.DoStep(IList<Robot.Common.Robot> robots, int robotToMoveIndex, Map map)
+        public string Author
         {
-            throw new NotImplementedException();
+            get { return "Hnidets Oleksandr"; }
+        }
+
+        public RobotCommand DoStep(IList<Robot.Common.Robot> robots, int robotToMoveIndex, Map map)
+        {
+            var myRobot = robots[robotToMoveIndex];
+            Position newposition = myRobot.Position;
+            newposition.X++;
+            newposition.Y++;
+            return new MoveCommand() { NewPosition = newposition };
         }
     }
 }
